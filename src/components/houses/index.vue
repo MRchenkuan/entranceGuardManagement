@@ -3,6 +3,7 @@
     <h4>房屋列表</h4>
     <div class="search-bar">
       <el-input class="search" placeholder="请填写小区ID" icon="search" v-model="search.keywords" :on-icon-click="handleIconClick"></el-input>
+      <el-button class="new" type="primary" icon="plus" @click="createAreas">新建楼栋/区域/单元</el-button>
       <el-button class="new" type="primary" icon="plus" @click="createHouse">新建房屋</el-button>
     </div>
     <template>
@@ -34,11 +35,13 @@
       :total="1000">
     </el-pagination>
     <create-house></create-house>
+    <create-areas></create-areas>
   </div>
 
 </template>
 <script>
   import CreateHouse from './CreateHouse'
+  import CreateAreas from './CreateAreas'
   export default {
     data () {
       return {
@@ -65,9 +68,13 @@
       },
       createHouse () {
         this.$store.dispatch('createHouse')
+      },
+      createAreas () {
+        this.$store.dispatch('createAreas')
       }
     },
     components: {
+      CreateAreas,
       CreateHouse
     }
   }
@@ -84,6 +91,7 @@
     }
     .new{
       float: right;
+      margin-right: 1rem;
     }
   }
   .pagebar{

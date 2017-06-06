@@ -13,7 +13,8 @@ const store = new Vuex.Store({
     communityId: 123,
     houseCreator: null,
     ownerCreator: null,
-    guardCreator: null
+    guardCreator: null,
+    areasCreator: null
   },
   mutations: {
     openHouseCreator (state) {
@@ -48,6 +49,17 @@ const store = new Vuex.Store({
         return false
       }
       state.guardCreator.open()
+    },
+    openAreaCreator (state) {
+      if (!state.areasCreator) {
+        Message({
+          message: '区域楼栋创建面板初始化失败！',
+          type: 'error',
+          duration: 2000
+        })
+        return false
+      }
+      state.areasCreator.open()
     }
   },
   actions: {
@@ -59,6 +71,9 @@ const store = new Vuex.Store({
     },
     createGuard (context) {
       context.commit('openGuardCreator')
+    },
+    createAreas (context) {
+      context.commit('openAreaCreator')
     }
   },
   getters: {
