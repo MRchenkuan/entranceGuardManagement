@@ -11,7 +11,7 @@
 
 <script>
   import HeaderBar from './HeaderBar.vue'
-  export default{
+  export default {
     data () {
       return {
         test: 1
